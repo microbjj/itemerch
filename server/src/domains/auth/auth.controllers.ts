@@ -14,13 +14,16 @@ export async function register(req: Request<{}, {}, UserBody>, res: Response) {
             return res.status(HTTP_STATUS.BAD_REQUEST).json(errors.array())
         }
 
-        const { username, password, info } = req.body
+        const { username, password, profile } = req.body
+
+        console.log(req.body)
+
         const passwordHash = await bcrypt.hash(password, 10)
 
         const doc = new UserModel({
             username,
             passwordHash,
-            ...info,
+            profile,
         })
 
         const user: IUser = await doc.save()

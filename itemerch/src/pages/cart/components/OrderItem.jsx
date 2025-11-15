@@ -35,7 +35,7 @@ export const OrderItem = ({ product }) => {
     const handleDeleteItem = () => {
         dispatch(deleteCartItem(id))
     }
-    console.log(product)
+
     return (
         <div className="flex items-center justify-between select-none">
             <div className="flex gap-x-4">

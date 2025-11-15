@@ -48,6 +48,30 @@ export function Register() {
                         error={errors.confirmPassword}
                     />
 
+                    <Input
+                        id="firstName"
+                        register={register}
+                        placeholder="Ф.И.О."
+                        component="auth"
+                        error={errors.firstName}
+                    />
+
+                    <Input
+                        id="email"
+                        register={register}
+                        placeholder="Email"
+                        component="auth"
+                        error={errors.email}
+                    />
+
+                    <Input
+                        id="phone"
+                        register={register}
+                        placeholder="Телефон"
+                        component="auth"
+                        error={errors.phone}
+                    />
+
                     <SubmitButton disabled={false}>
                         Зарегистрироваться
                     </SubmitButton>

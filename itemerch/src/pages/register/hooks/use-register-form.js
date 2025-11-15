@@ -18,11 +18,15 @@ export function useRegisterForm() {
             username: '',
             password: '',
             confirmPassword: '',
+            firstName: '',
+            email: '',
+            phone: '',
         },
     })
 
-    const onSubmit = async ({ username, password }) => {
-        const { error } = await dispatch(registerUser(username, password))
+    const onSubmit = async (data) => {
+        console.log('data', data)
+        const { error } = await dispatch(registerUser(data))
 
         if (error) {
             form.setError('confirmPassword', {

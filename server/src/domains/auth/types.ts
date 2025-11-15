@@ -1,7 +1,7 @@
 export interface UserBody {
     username: string
     password: string
-    info?: {
+    profile?: {
         avatar?: {
             name: string
             path: string

@@ -16,6 +16,7 @@ export function Admin() {
             <div className="mb-2 flex gap-x-2">
                 {tabs.map((tab) => (
                     <Button
+                        key={tab.id}
                         onClick={() => setActiveTab(tab.id)}
                         title={tab.label}
                     />
