@@ -1,0 +1,39 @@
+services:
+  nginx:
+    build:
+      context: ./nginx
+    container_name: frontend
+    ports:
+      - '80:80'
+    depends_on:
+      - server
+    networks:
+      - it-merch-network
+
+  server:
+    build:
+      context: ./server
+    container_name: backend
+    env_file:
+      - .env
+    depends_on:
+      - mongo
+    networks:
+      - it-merch-network
+
+  mongo:
+    image: mongo:6
+    container_name: mongo-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+    volumes:
+      - ./mongo-data:/data/db
+    ports:
+      - '27017:27017'
+    networks:
+      - it-merch-network
+
+networks:
+  it-merch-network:

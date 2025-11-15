@@ -1,0 +1,9 @@
+.idea
+__tests__
+dist
+mongo-data
+node_modules
+.git
+.gitignore
+jest.config.ts
+jest.setup.ts
