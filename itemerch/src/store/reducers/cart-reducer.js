@@ -6,12 +6,11 @@ export const cartReducer = (state = initialCartState, action) => {
     switch (action.type) {
         case CART_ACTION.ADD_CART: {
             const newItem = action.payload
-            const existingItems = state.find(
-                (item) => Number(item.id) === Number(newItem.id),
-            )
+            const existingItems = state.find((item) => item._id === newItem._id)
+
             if (existingItems) {
                 return state.map((item) =>
-                    item._id === newItem.id
+                    item._id === newItem._id
                         ? {
                               ...item,
                               quantity: item.quantity + newItem.quantity,

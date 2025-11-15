@@ -35,13 +35,13 @@ export const OrderItem = ({ product }) => {
     const handleDeleteItem = () => {
         dispatch(deleteCartItem(id))
     }
-
+    console.log(product)
     return (
         <div className="flex items-center justify-between select-none">
             <div className="flex gap-x-4">
                 <Link to={`/products/${id}`} target="_blank">
                     <img
-                        src={imageUrl}
+                        src={imageUrl[0]}
                         alt="view"
                         width="80px"
                         className="object-contain object-top"
