@@ -1,7 +1,7 @@
 FROM node:20 AS builder
 
 WORKDIR /app
-COPY ../itemerch ./frontend
+COPY itemerch ./frontend
 WORKDIR /app/frontend
 
 RUN npm install
