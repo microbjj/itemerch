@@ -40,13 +40,7 @@ services:
       - '27017:27017'
     networks:
       - it-merch-network
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - ./certbot/conf:/etc/letsencrypt
-      - ./certbot/www:/var/www/certbot
-    command: certonly --webroot -w /var/www/certbot --force-renewal --email 1705888@mail.ru -d getonlyneed.ru --agree-tos
+
 
 networks:
   it-merch-network:

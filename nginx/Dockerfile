@@ -12,5 +12,5 @@ FROM nginx:stable-alpine
 COPY nginx/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/frontend/dist /usr/share/nginx/html
 
-EXPOSE 80
+EXPOSE 80 443
 
