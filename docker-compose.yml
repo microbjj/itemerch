@@ -6,10 +6,15 @@ services:
     container_name: frontend
     ports:
       - '80:80'
+      - '443:443'
     depends_on:
       - server
     networks:
       - it-merch-network
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+
 
   server:
     build:
@@ -35,6 +40,13 @@ services:
       - '27017:27017'
     networks:
       - it-merch-network
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./certbot/conf:/etc/letsencrypt
+      - ./certbot/www:/var/www/certbot
+    command: certonly --webroot -w /var/www/certbot --force-renewal --email 1705888@mail.ru -d getonlyneed.ru --agree-tos
 
 networks:
   it-merch-network:
