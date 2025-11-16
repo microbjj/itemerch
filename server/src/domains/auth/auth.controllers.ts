@@ -16,8 +16,6 @@ export async function register(req: Request<{}, {}, UserBody>, res: Response) {
 
         const { username, password, profile } = req.body
 
-        console.log(req.body)
-
         const passwordHash = await bcrypt.hash(password, 10)
 
         const doc = new UserModel({
@@ -97,7 +95,11 @@ export async function restoreSession(req: Request, res: Response) {
         const payload: AuthPayload = verifyToken(token)
         const user: IUser | null = await getUserByUsername(payload.username)
         if (!user) {
-            return res.status(HTTP_STATUS.NOT_FOUND)
+            return res.status(HTTP_STATUS.NOT_FOUND).clearCookie("token", {
+                httpOnly: true,
+                secure: true,
+                sameSite: "strict",
+            })
         }
         res.json(toUserDto(user))
     } catch (error) {

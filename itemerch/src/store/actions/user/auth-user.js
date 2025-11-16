@@ -9,7 +9,7 @@ export const authUser = () => async (dispatch) => {
         const { data, error } = await fetchSession()
 
         if (error) {
-            return
+            dispatch({ type: USER_ACTION.USER_LOGOUT })
         }
 
         dispatch({ type: USER_ACTION.SET_USER, payload: data })

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Loader } from '@/components'
 import { selectUserLoading } from '@/store/selectors'
 
-export function PrivateRoute({ children }) {
+export function PrivateRoute({ children, roles }) {
     const isLoading = useSelector(selectUserLoading)
     const user = useSelector((state) => state.user)
 
@@ -11,7 +11,9 @@ export function PrivateRoute({ children }) {
         return <Loader />
     }
 
-    if (!user) {
+    const access = roles.includes(user.role)
+
+    if (!user || !access) {
         return <Navigate to="/" replace />
     }
 

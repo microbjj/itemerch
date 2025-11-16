@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router'
-import { PrivateRoute } from '../components'
+import { PrivateRoute } from '@/components'
 import {
     Auth,
     Admin,
@@ -11,21 +11,29 @@ import {
     Product,
     Profile,
     Register,
-} from '../pages'
+} from '@/pages'
+import { ROLE } from '@/utils/constants'
 
 export function AppRoutes() {
     return (
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/admin" element={<Admin />} />
+            <Route
+                path="/admin"
+                element={
+                    <PrivateRoute roles={[ROLE.ADMIN]}>
+                        <Admin />
+                    </PrivateRoute>
+                }
+            />
             <Route path="/auth" element={<Auth />} />
             <Route path="/register" element={<Register />} />
             <Route path="/products/:id" element={<Product />} />
             <Route
                 path="/profile"
                 element={
-                    <PrivateRoute>
+                    <PrivateRoute roles={[ROLE.USER, ROLE.ADMIN]}>
                         <Profile />
                     </PrivateRoute>
                 }
@@ -33,7 +41,7 @@ export function AppRoutes() {
             <Route
                 path="/profile/password"
                 element={
-                    <PrivateRoute>
+                    <PrivateRoute roles={[ROLE.USER, ROLE.ADMIN]}>
                         <Password />
                     </PrivateRoute>
                 }

@@ -62,7 +62,7 @@ export const ProductRow = ({
                 {new Date(product.createdAt).toLocaleDateString('ru-RU')}
             </td>
             <td className="border border-gray-300">
-                {editingId === product._id ? (
+                {isEditing ? (
                     <SaveAndCancel
                         saveEdit={saveEdit}
                         cancelEdit={cancelEdit}

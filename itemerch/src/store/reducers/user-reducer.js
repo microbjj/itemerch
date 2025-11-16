@@ -1,4 +1,4 @@
-import { USER_ACTION } from '../actions'
+import { PRODUCT_ACTION, USER_ACTION } from '../actions'
 import { ROLE } from '@/utils/constants'
 
 const initState = {

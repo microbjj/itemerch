@@ -25,11 +25,13 @@ export function useAuthForm() {
                 type: 'server',
                 message: error,
             })
-            return
+        } else {
+            navigate('/')
         }
-
-        navigate('/')
     }
 
-    return { ...form, onSubmit }
+    return {
+        ...form,
+        onSubmit,
+    }
 }

@@ -18,9 +18,9 @@ export function useRegisterForm() {
             username: '',
             password: '',
             confirmPassword: '',
-            firstName: '',
-            email: '',
-            phone: '',
+            firstName: null,
+            email: null,
+            phone: null,
         },
     })
 

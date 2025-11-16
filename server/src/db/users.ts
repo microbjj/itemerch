@@ -1,4 +1,4 @@
-import mongoose, { Document, Schema } from "mongoose"
+import mongoose, { Document, Schema, Types } from "mongoose"
 import { Role } from "@/utils"
 import { UserDto } from "@/db/types"
 import { IProduct, ProductModel } from "@/db/products"
@@ -86,4 +86,8 @@ export async function updateFavorites(user: UserDto, productId: string): Promise
         { favorites: updatedFavorites },
         { new: true },
     ).exec()
+}
+
+export async function deleteUserByUsername(username: string) {
+    return UserModel.findOneAndDelete({ username }).exec()
 }

@@ -3,3 +3,15 @@ export const ROLE = {
     USER: 'USER',
     GUEST: 'GUEST',
 }
+
+export const RoleLabels = {
+    [ROLE.ADMIN]: 'Админ',
+    [ROLE.USER]: 'Пользователь',
+    [ROLE.GUEST]: 'Гость',
+}
+
+export const ReverseRoleLabels = {
+    Админ: ROLE.ADMIN,
+    Пользователь: ROLE.USER,
+    Гость: ROLE.GUEST,
+}

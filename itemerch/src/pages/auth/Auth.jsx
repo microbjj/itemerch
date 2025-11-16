@@ -19,6 +19,7 @@ export function Auth() {
         <div className="mx-auto my-30 flex w-80 flex-col rounded-md border border-gray-500 py-8">
             <div className="flex w-full flex-col items-center px-6">
                 <h2 className="mb-4 text-lg font-bold">Вход в аккаунт</h2>
+
                 <form
                     onSubmit={handleSubmit(onSubmit)}
                     className="flex w-full flex-col gap-y-2"

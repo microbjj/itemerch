@@ -22,10 +22,12 @@ export const registerSchema = yup.object().shape({
         .oneOf([yup.ref('password'), null], 'Пароли не совпадают'),
     firstName: yup
         .string()
+        .nullable()
         .min(2, 'Минимум 2 буквы')
         .matches(/^\p{L}+$/u, 'Допускаются только буквы'),
-    email: yup.string().email('Введите корректный email'),
+    email: yup.string().nullable().email('Введите корректный email'),
     phone: yup
         .string()
+        .nullable()
         .matches(/^\d{10}$/, 'Введите 10 цифр без пробелов и символов'),
 })
